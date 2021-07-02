@@ -1,0 +1,44 @@
+@tailwind base;
+
+
+h1 {
+  @apply text-2xl;
+  @apply font-bold;
+}
+h2 {
+  @apply text-xl;
+  @apply font-semibold;
+}
+h3 {
+  @apply text-lg;
+  @apply font-medium;
+}
+p {
+  margin: 1em 0px;
+}
+
+.navbar {
+  display: flex;
+  /*justify-content: space-between;*/
+  align-items: center;
+  min-height: 40px;
+  padding: 10px 15px 10px 50px;
+}
+
+.navbar-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-ul {
+  display: flex;
+  margin: 0;
+}
+
+.nav-li {
+  margin: 0 10px;
+}
+
+@tailwind components;
+@tailwind utilities;

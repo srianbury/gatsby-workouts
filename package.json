@@ -1,0 +1,48 @@
+{
+  "name": "srianbury-gatsby-starter",
+  "private": true,
+  "description": "A simpler starter to get up and developing quickly with Gatsby",
+  "version": "0.1.0",
+  "author": "srianbury",
+  "dependencies": {
+    "gatsby": "^3.7.2",
+    "gatsby-image": "^2.4.20",
+    "gatsby-plugin-google-gtag": "^3.8.0",
+    "gatsby-plugin-image": "^1.7.1",
+    "gatsby-plugin-manifest": "^3.7.1",
+    "gatsby-plugin-offline": "^4.7.1",
+    "gatsby-plugin-react-helmet": "^4.7.1",
+    "gatsby-plugin-sharp": "^3.7.1",
+    "gatsby-remark-images": "^5.4.1",
+    "gatsby-remark-line-breaks": "^1.0.0",
+    "gatsby-remark-prismjs": "^5.3.0",
+    "gatsby-source-filesystem": "^3.7.1",
+    "gatsby-transformer-remark": "^4.3.0",
+    "gatsby-transformer-sharp": "^3.7.1",
+    "prismjs": "^1.23.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-helmet": "^6.1.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.2.6",
+    "gatsby-plugin-postcss": "^4.7.1",
+    "postcss": "^8.3.5",
+    "prettier": "2.1.2",
+    "tailwindcss": "^2.2.2"
+  },
+  "keywords": [
+    "gatsby"
+  ],
+  "license": "0BSD",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+  }
+}
