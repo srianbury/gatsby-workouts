@@ -1,64 +1,79 @@
 import React from "react";
+import { Link, graphql } from "gatsby";
 import Layout from "../components/layout";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
-const IndexPage = () => (
-  <Layout title="Home">
-    <div className="mx-auto max-w-screen-md">
-      <h1>Hello, there!</h1>
-      <p>
-        My name is Brian Sunbury and I'm a coder person. With this site I'm
-        hoping to share some code, which will likely be random thoughts of "How
-        can I do this?" or "Can you do this?".
-      </p>
-      <p>
-        I was inspired to write this blog by{" "}
-        <a
-          className="text-purple-900 hover:underline"
-          href="https://robinwieruch.de"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Robin Wieruch
-        </a>
-        . I've never talked with him, but I've read a lot of his articles
-        related to react, node, javascript, and testing. They've helped me learn
-        and grow so much in just a short time and I'm hoping to pay it forward.
-      </p>
-      <p>
-        Another inspiration of mine is{" "}
-        <a
-          className="text-purple-900 hover:underline"
-          href="https://kentcdodds.com"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Kent C. Dodds
-        </a>
-        . I think I first stumbled upon him because he wrote some code for my
-        org, and I see his name all over our enterprise github version. One
-        artical he wrote talked about how to grow your career (yes part of this
-        blog is for me) and suggests writing and sharing interesting problems
-        and solutions. By writing about and sharing your code, you learn how to
-        explain yourself and your code. And by sharing your code you can force
-        yourself to write good code. I encourage anyone reading this to do the
-        same! Feel free to clone the{" "}
-        <a
-          className="text-purple-900 hover:underline"
-          href="https://github.com/srianbury/gatsby-srianbury-blog"
-          target="_blank"
-          rel="noreferrer"
-        >
-          repo for this site
-        </a>{" "}
-        and start your own!
-      </p>
-      <p>
-        I'm by no means an expert and by sharing my code with the world, I'm
-        hope to get feedback and constructive critism on how I can become a
-        better developer.
-      </p>
-    </div>
-  </Layout>
-);
+const Home = ({ data }) => {
+  return (
+    <Layout title="Home">
+      <div className="mx-auto max-w-screen-md">
+        {data.allMarkdownRemark.edges.map(({ node }) => (
+          <div key={node.id}>
+            <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mb-4">
+              <div className="md:flex">
+                <div className="md:flex-shrink-0">
+                  <Link to={node.fields.slug}>
+                    <GatsbyImage
+                      className="h-64 w-full object-cover md:h-full md:w-64"
+                      image={getImage(node.frontmatter.banner)}
+                      alt="banner"
+                    />
+                  </Link>
+                </div>
+                <div className="px-4 py-2">
+                  <Link to={node.fields.slug} className="hover:underline">
+                    <h2>{node.frontmatter.title}</h2>
+                  </Link>
+                  <div>{node.frontmatter.channel}</div>
+                  <p className="mt-2 text-gray-500">
+                    {node.frontmatter.tags.split(",").join(", ")}
+                  </p>
+                  <Link
+                    to={node.fields.slug}
+                    className="text-purple-900 hover:underline"
+                  >
+                    View
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </Layout>
+  );
+};
 
-export default IndexPage;
+const query = graphql`
+  query {
+    allMarkdownRemark(
+      filter: { fields: { slug: { ne: null } } }
+      limit: 5
+      sort: { fields: [frontmatter___date, frontmatter___title], order: DESC }
+    ) {
+      edges {
+        node {
+          id
+          frontmatter {
+            title
+            channel
+            date
+            tags
+            banner {
+              childImageSharp {
+                gatsbyImageData(placeholder: TRACED_SVG, height: 200)
+              }
+            }
+          }
+          excerpt
+          fields {
+            slug
+          }
+        }
+      }
+    }
+  }
+`;
+
+export default Home;
+export { query };

@@ -26,19 +26,17 @@ const Layout = ({ title, children }) => {
     <>
       <Seo title={title} />
       <div className="flex flex-col h-screen justify-between">
-        <header className="border-b-2 border-black py-2 mb-2">
-          <div className="container">
-            <Header siteTitle={data.site.siteMetadata.title || `Title`} />
-          </div>
+        <header className="mb-2">
+          <Header siteTitle={data.site.siteMetadata.title || `Title`} />
         </header>
         <main className="mb-auto">
           <div className="container">
             <main>{children}</main>
           </div>
         </main>
-        <footer className="py-10 border-t-2 border-black">
+        <footer className="py-10 mt-2 bg-gradient-to-r from-green-400 to-purple-500">
           <div className="container">
-            <h1 className="text-4xl">footer</h1>
+            <h1 className="text-4xl">{data.site.siteMetadata.title}</h1>
           </div>
         </footer>
       </div>

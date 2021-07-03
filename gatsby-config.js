@@ -4,19 +4,10 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `srianbury`,
-    description:
-      "Software Engineer for React.js, Node.js, GraphQL, JavaScript, Python, and SQL.",
+    title: `stolen`,
+    description: "YouTube workouts described.",
     author: `Brian Sunbury`,
-    keywords: [
-      "web development",
-      "software engineer",
-      "reactjs",
-      "nodejs",
-      "graphql",
-      "python",
-      "sql",
-    ],
+    keywords: ["workout", "youtube", "exercises", "fitness", "health"],
   },
   plugins: [
     {
@@ -54,8 +45,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `srianbury`,
-        short_name: `sb`,
+        name: `stolen`,
+        short_name: `stolen`,
         start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,

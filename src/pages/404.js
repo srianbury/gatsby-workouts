@@ -3,8 +3,9 @@ import Layout from "../components/layout";
 
 const NotFoundPage = () => (
   <Layout title="404: Not found">
-    <h1>404: Not Found</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+    <div className="mx-auto max-w-screen-md">
+      <h1>404: Not Found</h1>
+    </div>
   </Layout>
 );
 

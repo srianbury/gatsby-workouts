@@ -9,7 +9,7 @@
 const path = require(`path`);
 const { createFilePath } = require(`gatsby-source-filesystem`);
 const CONSTANTS = {
-  blogPath: "blog",
+  woPath: "wo",
 };
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
@@ -20,7 +20,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       actions.createNodeField({
         node,
         name: `slug`,
-        value: `/${CONSTANTS.blogPath}${createFilePath({ node, getNode })}`,
+        value: `/${CONSTANTS.woPath}${createFilePath({ node, getNode })}`,
       });
     }
   }
@@ -44,7 +44,7 @@ exports.createPages = async ({ graphql, actions }) => {
   result.data.allMarkdownRemark.edges.forEach(({ node }) => {
     actions.createPage({
       path: node.fields.slug,
-      component: path.resolve(`./src/templates/blog-post.js`),
+      component: path.resolve(`./src/templates/wo-post.js`),
       context: {
         // Data passed to context is available
         // in page queries as GraphQL variables.

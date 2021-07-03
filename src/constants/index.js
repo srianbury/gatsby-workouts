@@ -1,3 +1,3 @@
-const blogPath = "blog";
+const woPath = "wo";
 
-export { blogPath };
+export { woPath };
