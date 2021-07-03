@@ -7,13 +7,13 @@ url: https://www.youtube.com/watch?v=4zxKKIG_1iA
 tags: abs
 ---
 
-## Overview:
+## Overview
 - 6 exercises, 30 seconds each for the first 3 minutes
 - 3 exercises, 1 minute each for the last 3 minutes
 
 <br />
 
-## Workout:
+## Workout
 1. Split Leg Lift Hold (switch every 5 seconds)
 2. Leg Lifts
 3. Toe Touch

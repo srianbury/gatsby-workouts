@@ -7,7 +7,7 @@ url: https://www.youtube.com/watch?v=5teLQVjRghU
 tags: chest,back,legs,shoulders,abs,conditioning
 ---
 
-## Workout: 
+## Workout
 ### 1. 3 rounds - 1 min. rest between sets
   1. DB Floor Press (to Failure)
   2. DB Bent Over Row (to Failure)

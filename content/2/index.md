@@ -7,14 +7,14 @@ url: https://www.youtube.com/watch?v=otMBarbktc8
 tags: abs
 ---
 
-## Overview:
+## Overview
 - 12 Exercises
 - 30 seconds each
 - 6 minutes total
 
 <br />
 
-## Workout:
+## Workout
 1. Leg Lifts
 2. Reverse Crunch
 3. Toe Touch
