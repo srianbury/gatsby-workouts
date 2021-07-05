@@ -4,7 +4,7 @@ channel: Steve Cook
 date: "2021-07-02"
 banner: "./images/banner.jpg"
 url: https://www.youtube.com/watch?v=5teLQVjRghU
-tags: chest,back,legs,shoulders,abs,conditioning
+tags: chest,back,legs,shoulders,abs,conditioning,at home
 ---
 
 ## Workout

@@ -4,7 +4,7 @@ channel: ALMOST HOME
 date: "2021-07-02"
 banner: "./images/banner.jpg"
 url: https://www.youtube.com/watch?v=otMBarbktc8
-tags: abs
+tags: abs,at home
 ---
 
 ## Overview

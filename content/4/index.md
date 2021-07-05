@@ -4,7 +4,7 @@ channel: "Men's Health"
 date: "2021-07-03"
 banner: "./images/banner.jpg"
 url: https://www.youtube.com/watch?v=PVr9fU2Kgjs
-tags: conditioning,legs,chest,back
+tags: conditioning,legs,chest,back,at home
 ---
 
 ## Overview
