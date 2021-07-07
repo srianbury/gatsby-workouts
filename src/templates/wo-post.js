@@ -22,7 +22,7 @@ const BlogPost = ({ data }) => (
             // height="315"
             src={`https://www.youtube.com/embed/${extractVideoId(
               data.markdownRemark.frontmatter.url
-            )}`}
+            )}&playsinline=1`}
             title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
