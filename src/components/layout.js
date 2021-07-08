@@ -34,7 +34,7 @@ const Layout = ({ title, children }) => {
             <main>{children}</main>
           </div>
         </main>
-        <footer className="py-10 mt-2 bg-gradient-to-r from-green-400 to-purple-500">
+        <footer className="py-10 mt-4 bg-gradient-to-r from-green-400 to-purple-500">
           <div className="container">
             <h1 className="text-4xl">{data.site.siteMetadata.title}</h1>
           </div>
