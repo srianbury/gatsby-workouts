@@ -12,6 +12,10 @@ const CONSTANTS = {
   woPath: "wo",
 };
 
+function getWorkoutPath(pageNum) {
+  return pageNum === 1 ? `/wos` : `/wos/${pageNum}`;
+}
+
 exports.onCreateNode = ({ node, getNode, actions }) => {
   if (node.internal.type === `MarkdownRemark`) {
     const dir = node.fileAbsolutePath.split("/");
@@ -29,7 +33,10 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 exports.createPages = async ({ graphql, actions }) => {
   const result = await graphql(`
     query {
-      allMarkdownRemark(filter: { fields: { slug: { ne: null } } }) {
+      allMarkdownRemark(
+        filter: { fields: { slug: { ne: null } } }
+        sort: { fields: [frontmatter___date, frontmatter___title], order: DESC }
+      ) {
         edges {
           node {
             fileAbsolutePath
@@ -41,7 +48,32 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `);
-  result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+
+  const posts = result.data.allMarkdownRemark.edges;
+  const POSTS_PER_PAGE = 4;
+  const numPages = Math.ceil(posts.length / POSTS_PER_PAGE);
+
+  Array.from({ length: numPages }).forEach((_, i) => {
+    const currentPageNum = i + 1;
+    const prevPageNum = currentPageNum - 1;
+    const nextPageNum = currentPageNum + 1;
+
+    actions.createPage({
+      path: getWorkoutPath(currentPageNum), // currentPageNum === 1 ? `/wos` : `/wos/${currentPageNum}`,
+      component: path.resolve("./src/templates/wo-list.js"),
+      context: {
+        limit: POSTS_PER_PAGE,
+        skip: i * POSTS_PER_PAGE,
+        numPages,
+        currentPageNum,
+        prevPageNum: prevPageNum > 0 ? getWorkoutPath(prevPageNum) : null,
+        nextPageNum:
+          nextPageNum <= numPages ? getWorkoutPath(nextPageNum) : null,
+      },
+    });
+  });
+
+  posts.forEach(({ node }) => {
     actions.createPage({
       path: node.fields.slug,
       component: path.resolve(`./src/templates/wo-post.js`),
