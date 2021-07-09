@@ -5,12 +5,23 @@
  * See: https://www.gatsbyjs.com/docs/use-static-query/
  */
 
+/*
+ skipped: 
+  1. canonical
+  2. og:latitude
+  3. og:longitude
+  4. og:locality
+  5. og:url
+  6. og:type
+  7. og:image:width
+  8. og:image:height
+*/
 import React from "react";
 import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
 
-function Seo({ description, lang, meta, title }) {
+function Seo({ description, lang, meta, title, imageUrl, type }) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -19,14 +30,24 @@ function Seo({ description, lang, meta, title }) {
             title
             description
             author
+            url
           }
         }
       }
     `
   );
 
-  const metaDescription = description || site.siteMetadata.description;
-  const defaultTitle = site.siteMetadata?.title;
+  const url = site.siteMetadata.url;
+
+  const siteDescription = site.siteMetadata.description;
+  const pageDescription = description || siteDescription;
+
+  const siteTitle = site.siteMetadata.title;
+  const pageTitle = title || siteTitle;
+
+  const siteAuthor = site.siteMetadata.author;
+
+  const imageFullPath = imageUrl ? `${url}${imageUrl}` : null;
 
   return (
     <Helmet
@@ -34,23 +55,33 @@ function Seo({ description, lang, meta, title }) {
         lang,
       }}
       title={title}
-      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
+      titleTemplate={pageTitle ? `%s | ${pageTitle}` : null}
       meta={[
         {
           name: `description`,
-          content: metaDescription,
+          content: pageDescription,
+        },
+        {
+          property: "og:site_name",
+          content: siteTitle,
         },
         {
           property: `og:title`,
-          content: title,
+          content: pageTitle,
         },
         {
           property: `og:description`,
-          content: metaDescription,
+          content: pageDescription,
         },
+        imageFullPath
+          ? {
+              property: `og:image`,
+              content: imageFullPath,
+            }
+          : null,
         {
           property: `og:type`,
-          content: `website`,
+          content: type,
         },
         {
           name: `twitter:card`,
@@ -58,17 +89,53 @@ function Seo({ description, lang, meta, title }) {
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata?.author || ``,
+          content: siteAuthor,
         },
         {
           name: `twitter:title`,
-          content: title,
+          content: pageTitle,
         },
+        imageFullPath
+          ? {
+              name: `twitter:image`,
+              content: imageFullPath,
+            }
+          : null,
         {
           name: `twitter:description`,
-          content: metaDescription,
+          content: pageDescription,
         },
-      ].concat(meta)}
+        {
+          itemprop: "name",
+          content: pageTitle,
+        },
+        {
+          itemprop: "description",
+          content: pageDescription,
+        },
+        imageFullPath
+          ? {
+              itemprop: "thumbnailUrl",
+              content: imageFullPath,
+            }
+          : null,
+        imageFullPath
+          ? {
+              itemprop: "image",
+              content: imageFullPath,
+            }
+          : null,
+        {
+          itemprop: "author",
+          content: siteAuthor,
+        },
+        {
+          itemprop: "headline",
+          content: pageTitle,
+        },
+      ]
+        .filter(node => node !== null)
+        .concat(meta)}
     />
   );
 }
@@ -77,6 +144,7 @@ Seo.defaultProps = {
   lang: `en`,
   meta: [],
   description: ``,
+  type: "website",
 };
 
 Seo.propTypes = {
