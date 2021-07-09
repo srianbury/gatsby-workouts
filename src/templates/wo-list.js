@@ -41,10 +41,11 @@ const PageNavigator = ({ pageContext }) => (
   </div>
 );
 
-const Home = ({ data, pageContext }) => {
+const Home = ({ data, pageContext, location }) => {
   return (
     <Layout
       title="Home"
+      url={location.href}
       afterMainBeforeFooter={<PageNavigator pageContext={pageContext} />}
     >
       {data.allMarkdownRemark.edges.map(({ node }) => (

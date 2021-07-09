@@ -2,13 +2,13 @@ import React, { useEffect } from "react";
 import { navigate } from "gatsby";
 import Layout from "../components/layout";
 
-const Home = () => {
+const Home = ({ location }) => {
   useEffect(() => {
     navigate("/wos");
   }, []);
 
   return (
-    <Layout title="Home">
+    <Layout title="Home" url={location.href}>
       <div></div>
     </Layout>
   );
