@@ -66,10 +66,10 @@ function Seo({ description, lang, meta, title, imageUrl, type, url }) {
           property: "og:site_name",
           content: siteTitle,
         },
-        {
-          property: "og:url",
-          content: pageUrl,
-        },
+        // {
+        //   property: "og:url",
+        //   content: pageUrl,
+        // },
         {
           property: `og:title`,
           content: pageTitle,
