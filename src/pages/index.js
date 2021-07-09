@@ -9,7 +9,7 @@ const Home = () => {
 
   return (
     <Layout title="Home">
-      <div className="mx-auto max-w-screen-md"></div>
+      <div></div>
     </Layout>
   );
 };
