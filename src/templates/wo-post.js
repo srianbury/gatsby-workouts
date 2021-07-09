@@ -5,7 +5,12 @@ import { extractVideoId } from "../utils";
 
 // <div className="py-4 mx-auto max-w-screen-md">
 const BlogPost = ({ data }) => (
-  <Layout title={data.markdownRemark.frontmatter.title}>
+  <Layout
+    title={data.markdownRemark.frontmatter.title}
+    type="article"
+    imageUrl={data.markdownRemark.frontmatter.banner.publicURL}
+    description={data.markdownRemark.excerpt}
+  >
     <div className="text-center">
       <h1 className="capitalize">{data.markdownRemark.frontmatter.title}</h1>
       <h3>{data.markdownRemark.frontmatter.channel}</h3>
@@ -42,12 +47,16 @@ const query = graphql`
   query($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
+      excerpt
       frontmatter {
         title
         channel
         date(formatString: "MMMM DD, YYYY")
         url
         tags
+        banner {
+          publicURL
+        }
       }
     }
   }

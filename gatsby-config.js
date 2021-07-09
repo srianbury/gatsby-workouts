@@ -5,9 +5,10 @@ require("dotenv").config({
 module.exports = {
   siteMetadata: {
     title: `stolen`,
-    description: "YouTube workouts described.",
+    description: "Workouts described.",
     author: `Brian Sunbury`,
     keywords: ["workout", "youtube", "exercises", "fitness", "health"],
+    url: "https://stolen.netlify.app", // No trailing slash allowed!
   },
   plugins: [
     {

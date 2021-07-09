@@ -11,7 +11,13 @@ import { useStaticQuery, graphql } from "gatsby";
 import Header from "./header";
 import Seo from "./seo";
 
-const Layout = ({ title, children, afterMainBeforeFooter }) => {
+const Layout = ({
+  title,
+  children,
+  afterMainBeforeFooter,
+  imageUrl,
+  description,
+}) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -24,7 +30,7 @@ const Layout = ({ title, children, afterMainBeforeFooter }) => {
 
   return (
     <>
-      <Seo title={title} />
+      <Seo title={title} imageUrl={imageUrl} description={description} />
       <div className="flex flex-col h-screen justify-between">
         <header className="mb-2">
           <Header siteTitle={data.site.siteMetadata.title || `Title`} />
