@@ -11,8 +11,6 @@ import { useStaticQuery, graphql } from "gatsby";
 import Header from "./header";
 import Seo from "./seo";
 
-const TOP_BOTTOM_MARGIN = 2;
-
 const Layout = ({ title, children, afterMainBeforeFooter }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
@@ -28,7 +26,7 @@ const Layout = ({ title, children, afterMainBeforeFooter }) => {
     <>
       <Seo title={title} />
       <div className="flex flex-col h-screen justify-between">
-        <header className={`mb-${TOP_BOTTOM_MARGIN}`}>
+        <header className="mb-2">
           <Header siteTitle={data.site.siteMetadata.title || `Title`} />
         </header>
         <main className="mb-auto">
@@ -38,11 +36,9 @@ const Layout = ({ title, children, afterMainBeforeFooter }) => {
             </div>
           </div>
         </main>
-        <div>
+        <div className="mt-2">
           {afterMainBeforeFooter}
-          <footer
-            className={`py-10 mt-${TOP_BOTTOM_MARGIN} bg-gradient-to-r from-green-400 to-purple-500`}
-          >
+          <footer className="py-10 mt-2 bg-gradient-to-r from-green-400 to-purple-500">
             <div className="container">
               <h1 className="text-4xl">{data.site.siteMetadata.title}</h1>
             </div>
