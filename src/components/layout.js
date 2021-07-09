@@ -17,6 +17,7 @@ const Layout = ({
   afterMainBeforeFooter,
   imageUrl,
   description,
+  url,
 }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
@@ -30,7 +31,12 @@ const Layout = ({
 
   return (
     <>
-      <Seo title={title} imageUrl={imageUrl} description={description} />
+      <Seo
+        title={title}
+        imageUrl={imageUrl}
+        description={description}
+        url={url}
+      />
       <div className="flex flex-col h-screen justify-between">
         <header className="mb-2">
           <Header siteTitle={data.site.siteMetadata.title || `Title`} />
