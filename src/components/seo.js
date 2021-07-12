@@ -38,10 +38,9 @@ function Seo({ description, lang, meta, title, imageUrl, type, url }) {
   );
 
   const siteUrl = site.siteMetadata.url;
-  const pageUrl = url || siteUrl;
 
   const siteDescription = site.siteMetadata.description;
-  const pageDescription = description || siteDescription;
+  const pageDescription = description === null ? siteDescription : description;
 
   const siteTitle = site.siteMetadata.title;
   const pageTitle = title || siteTitle;
